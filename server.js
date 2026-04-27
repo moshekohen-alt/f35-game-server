@@ -6,9 +6,8 @@ const MAX_PLAYERS = 6;
 const rooms = {}; // roomCode -> { players: Map<ws, playerData> }
 
 function generateCode() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let code = '';
-  for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  // 4-digit numeric code: 1000-9999
+  const code = String(Math.floor(1000 + Math.random() * 9000));
   return rooms[code] ? generateCode() : code; // ensure unique
 }
 
